@@ -6,8 +6,8 @@ from utils.drawer import Drawer
 
 
 class VideoMaker:
-    def __init__(self) -> None:
-        self.drawer = Drawer()
+    def __init__(self, drawer: Drawer) -> None:
+        self.drawer = drawer
 
     def make_video(self, video_file_path_list: list):
         try:
