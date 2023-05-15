@@ -5,7 +5,7 @@ from pathlib import Path, PurePath
 
 class MyConfig(BaseSettings):
     TITLE: list[str]
-    PHONE_TEXT: list[str]
+    PHONE_TEXT: list[str] = []
     NAME: str
     PHONE: str
     LOCATION: str = None
@@ -13,7 +13,6 @@ class MyConfig(BaseSettings):
     DIR: Path = Path.cwd()
     SRC_DIR: Path = DIR / 'src'
     W13_DIR: Path = DIR / 'w13'
-    RESULT_DIR: Path = DIR / 'result' / datetime.now().strftime('%Y-%m-%d')
     FONT_DIR: Path = DIR / 'ttf'
     IMG_SIZE: int = 1080
 
@@ -22,6 +21,10 @@ class MyConfig(BaseSettings):
     TEXT_BORDER_COLOR_RGB: str
     TEXT_FILL_COLOR_RGB: str
     NAME_FILL_COLOR_RGB: str
+
+    MAIN_FONT_SIZE: int
+    MAIN_POSITION_X: int
+    MAIN_POSITION_Y: int
 
     @property
     def IMAGE_BORDER_COLOR(self) -> tuple[int]:

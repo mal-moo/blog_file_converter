@@ -33,13 +33,13 @@ class ImageMaker:
         self.img = img.resize((config.IMG_SIZE, config.IMG_SIZE), Image.LANCZOS)
 
     def make_main(self, text: str) -> Image:
-        self._add_border(10, config.TEXT_BORDER_COLOR)
+        self._add_border(8, config.TEXT_BORDER_COLOR)
         self._add_border(60, config.IMAGE_BORDER_COLOR)
 
         text = '\n'.join(text)
         self.drawer.draw_text_on_image(
-            self.img, text, pos_x=105, pos_y=220, font_size=150, rgb=config.TEXT_FILL_COLOR,
-            b_rgb=config.TEXT_BORDER_COLOR, spacing=60, stroke_width=8
+            self.img, text, pos_x=config.MAIN_POSITION_X, pos_y=config.MAIN_POSITION_Y, font_size=config.MAIN_FONT_SIZE, rgb=config.TEXT_FILL_COLOR,
+            b_rgb=config.TEXT_BORDER_COLOR, spacing=70, stroke_width=7
         )
         return self.img
 
@@ -54,14 +54,15 @@ class ImageMaker:
 
     def make_tel(self, tel_type: str) -> Image:
         if tel_type.endswith('1'):
-            text = f"클릭하시면 전화로 연결됩니다\n문의 {config.PHONE}"
+            text = f"리페어브라더스\n클릭시 전화연결됩니다."
             y = 850
             font_size = 80
         else:
-            text = "클릭하시면\n전화로 연결됩니다"
-            y = 800
-            font_size = 115
-        self.drawer.draw_text_on_image(self.img, text, pos_y=y, font_size=font_size)
+            text = "리페어브라더스 전화연결"
+            y = 930
+            font_size = 100
+        self.drawer.draw_text_on_image(self.img, text, pos_y=y, font_size=font_size, rgb=config.TEXT_BORDER_COLOR,
+            b_rgb=config.TEXT_FILL_COLOR)
         return self.img
 
     def make_last(self, text: str) -> Image:
