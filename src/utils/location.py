@@ -13,8 +13,8 @@ class Location:
                 "옥정", "용인", "의왕", "의정부", "이천", "일산", "파주", "판교", "평택", "포천", "하남", "화성"
             ],
             "서울": [
-                "강남", "고덕", "관악", "도봉", "동대문", "반포", "방배", "삼성", "서대문", "서초", "성북",
-                "송파", "신사", "왕십리", "잠실", "종로", "천호", "청담"
+                "강남", "고덕", "관악", "도봉", "동대문", "반포", "방배", "삼성", "서대문", "서초",
+                "성북", "송파", "신사", "왕십리", "잠실", "종로", "천호", "청담"
             ],
             "인천": [
                 "부평", "송도", "영종도", "청라"
@@ -27,15 +27,15 @@ class Location:
     def get_cities(self):
         if self.city is None:
             all_cities = self.CITIES['경기'] + self.CITIES['서울'] + self.CITIES['인천'] + self.CITIES['천안']
-            ret = random.sample(all_cities, 20)
+            ret = random.sample(all_cities, 30)
         elif self.city in ('경기', '경기도'):
-            ret = random.sample(self.CITIES['경기'], 20)
+            ret = random.sample(self.CITIES['경기'], 30)
         elif self.city in ('서울', '서울특별시', '서울시'):
-            ret = self.CITIES['서울'] + random.sample(self.CITIES['경기'], 2)
+            ret = self.CITIES['서울'] + random.sample(self.CITIES['경기'], 12)
         elif self.city in ('인천', '인천광역시'):
-            ret = self.CITIES['인천'] + random.sample(self.CITIES['경기'], 16)
+            ret = self.CITIES['인천'] + random.sample(self.CITIES['경기'], 26)
         elif self.city == '천안':
-            ret = self.CITIES['서울'] + random.sample(self.CITIES['경기'], 19)
+            ret = self.CITIES['서울'] + random.sample(self.CITIES['경기'], 29)
 
         if ret:
             return ', '.join(ret) + ' 지역 등'

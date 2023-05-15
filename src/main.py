@@ -20,7 +20,7 @@ def make_image_by_type(filename: str, imagemaker: ImageMaker) -> str | None:
             img = imagemaker.make_main(config.TITLE)
             dname = 'fin_main.jpg'
         case TYPE_FILE_NUMBER.TWO | TYPE_FILE_NUMBER.THREE:
-            text = '시공전' if filename == TYPE_FILE_NUMBER.TWO else '시공후'
+            text = 'Before' if filename == TYPE_FILE_NUMBER.TWO else 'After'
             img = imagemaker.make_beaf(text)
             dname = f'fin_{text}.jpg'
         case TYPE_FILE_NUMBER.FOUR | TYPE_FILE_NUMBER.FIVE:
@@ -34,8 +34,8 @@ def make_image_by_type(filename: str, imagemaker: ImageMaker) -> str | None:
             pass
 
     if img is not None:
-        img.save(config.RESULT_DIR / dname, quality=100)
-        print(f'{filename} > success > {config.RESULT_DIR / dname}')
+        img.save(config.W13_DIR / dname, quality=100)
+        print(f'{filename} > success > {config.W13_DIR / dname}')
 
 
 def total(path: str):
@@ -61,7 +61,7 @@ def total(path: str):
             video_file_path_list.append(filename)
     VideoMaker(drawer=drawer).make_video(video_file_path_list)
 
-    with open(config.RESULT_DIR / 'city.txt', 'w', encoding='utf-8') as af:
+    with open(config.W13_DIR / 'city.txt', 'w', encoding='utf-8') as af:
         af.write(Location().get_cities())
 
 
@@ -110,15 +110,14 @@ def only_image(path: str):
         dname = 'fin_last.jpg'
 
     try:
-        img.save(config.RESULT_DIR / dname, quality=100)
-        print(f'{filename} > success > {config.RESULT_DIR / dname}')
+        img.save(config.W13_DIR / dname, quality=100)
+        print(f'{filename} > success > {config.W13_DIR / dname}')
     except Exception as e:
         print(f'++ [{itype}] ERROR: {e}')
 
 
 def run():
     path = f'{config.W13_DIR}/'
-    os.makedirs(config.RESULT_DIR, exist_ok=True)
 
     if len(sys.argv) == 1:
         total(path)

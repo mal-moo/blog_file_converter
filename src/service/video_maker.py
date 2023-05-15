@@ -18,16 +18,16 @@ class VideoMaker:
 
             if seconds < 0:
                 video = mp.VideoFileClip(f'{config.W13_DIR}/{video_file_path_list[0]}')
-                v1 = self.drawer.draw_text_on_video(video, '시공전')
+                v1 = self.drawer.draw_text_on_video(video, 'Before')
                 video = mp.VideoFileClip(f'{config.W13_DIR}/{video_file_path_list[1]}')
-                v2 = self.drawer.draw_text_on_video(video, '시공후')
+                v2 = self.drawer.draw_text_on_video(video, 'After')
             else:
                 video = mp.VideoFileClip(f'{config.W13_DIR}/{video_file_path_list[1]}')
-                v1 = self.drawer.draw_text_on_video(video, '시공전')
+                v1 = self.drawer.draw_text_on_video(video, 'Before')
                 video = mp.VideoFileClip(f'{config.W13_DIR}/{video_file_path_list[0]}')
-                v2 = self.drawer.draw_text_on_video(video, '시공후')
+                v2 = self.drawer.draw_text_on_video(video, 'After')
 
-            fname = f'{config.RESULT_DIR}/fin.mp4'
+            fname = f'{config.W13_DIR}/fin.mp4'
             fin_video = mp.concatenate_videoclips([v1, v2], method='compose')
             fin_video.to_videofile(fname, fps=60, remove_temp=True, audio_codec='aac')
 
