@@ -6,6 +6,9 @@ from utils.drawer import Drawer
 
 
 class VideoMaker:
+    '''
+    ffmpeg -i movie.mp4 -vf scale=1280:720 movie_new.mp4
+    '''
     def __init__(self, drawer: Drawer) -> None:
         self.drawer = drawer
 
