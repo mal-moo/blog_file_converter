@@ -1,5 +1,4 @@
-from datetime import datetime
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 from pathlib import Path, PurePath
 
 
@@ -8,7 +7,7 @@ class MyConfig(BaseSettings):
     PHONE_TEXT: list[str] = []
     NAME: str
     PHONE: str
-    LOCATION: str = None
+    LOCATION: str = ''
 
     DIR: Path = Path.cwd()
     SRC_DIR: Path = DIR / 'src'
