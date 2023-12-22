@@ -58,9 +58,9 @@ class ImageMaker:
             y = 850
             font_size = 80
         else:
-            text = "리페어브라더스 전화연결"
+            text = "사진 클릭시 전화연결됩니다."
             y = 930
-            font_size = 100
+            font_size = 90
         self.drawer.draw_text_on_image(self.img, text, pos_y=y, font_size=font_size, rgb=config.TEXT_BORDER_COLOR,
             b_rgb=config.TEXT_FILL_COLOR)
         return self.img
