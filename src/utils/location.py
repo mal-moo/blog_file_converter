@@ -28,16 +28,17 @@ class Location:
         if not self.city:
             all_cities = self.CITIES['경기'] + self.CITIES['서울'] + self.CITIES['인천'] + self.CITIES['천안']
             ret = random.sample(all_cities, 30)
-        elif self.city in ('경기', '경기도'):
-            ret = random.sample(self.CITIES['경기'], 30)
-        elif self.city in ('서울', '서울특별시', '서울시'):
-            ret = self.CITIES['서울'] + random.sample(self.CITIES['경기'], 12)
-        elif self.city in ('인천', '인천광역시'):
-            ret = self.CITIES['인천'] + random.sample(self.CITIES['경기'], 26)
-        elif self.city == '천안':
-            ret = self.CITIES['서울'] + random.sample(self.CITIES['경기'], 29)
+            ret_2 = random.sample(all_cities, 7)
+        # elif self.city in ('경기', '경기도'):
+        #     ret = random.sample(self.CITIES['경기'], 30)
+        # elif self.city in ('서울', '서울특별시', '서울시'):
+        #     ret = self.CITIES['서울'] + random.sample(self.CITIES['경기'], 12)
+        # elif self.city in ('인천', '인천광역시'):
+        #     ret = self.CITIES['인천'] + random.sample(self.CITIES['경기'], 26)
+        # elif self.city == '천안':
+        #     ret = self.CITIES['서울'] + random.sample(self.CITIES['경기'], 29)
 
         if ret:
-            return ', '.join(ret) + ' 지역 등'
+            return ', '.join(ret) + ' 지역 등\n\n' + ', '.join(ret_2)
         else:
             return f'no match!!!! {self.city}'

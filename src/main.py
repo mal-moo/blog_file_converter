@@ -20,7 +20,7 @@ def make_image_by_type(filename: str, imagemaker: ImageMaker) -> str | None:
             img = imagemaker.make_main(config.TITLE)
             dname = 'fin_main.jpg'
         case TYPE_FILE_NUMBER.TWO | TYPE_FILE_NUMBER.THREE:
-            text = 'Before' if filename == TYPE_FILE_NUMBER.TWO else 'After'
+            text = '작업전' if filename == TYPE_FILE_NUMBER.TWO else '작업후'
             img = imagemaker.make_beaf(text)
             dname = f'fin_{text}.jpg'
         case TYPE_FILE_NUMBER.FOUR | TYPE_FILE_NUMBER.FIVE:
