@@ -34,7 +34,7 @@ class ImageMaker:
 
     def make_main(self, text: str) -> Image:
         # self._add_border(8, config.TEXT_BORDER_COLOR)
-        self._add_border(40, config.IMAGE_BORDER_COLOR)
+        self._add_border(50, config.IMAGE_BORDER_COLOR)
 
         # text = '\n'.join(text)
         # self.drawer.draw_text_on_image(
