@@ -44,25 +44,25 @@ class ImageMaker:
         return self.img
 
     def make_beaf(self, text: str) -> Image:
-        y = 950
-        font_size = 70
+        x = 10
+        y = 10
+        font_size = 140
         self.drawer.draw_text_on_image(
-            self.img, text, pos_y=y, font_size=font_size, rgb=config.TEXT_BORDER_COLOR,
-            b_rgb=config.IMAGE_BORDER_COLOR, has_background=True
+            self.img, text, pos_x=x, pos_y=y, font_size=font_size, rgb=config.TEXT_BORDER_COLOR,
+            stroke_width=0
         )
         return self.img
 
     def make_tel(self, tel_type: str) -> Image:
         if tel_type.endswith('1'):
-            text = f"리페어브라더스\n클릭시 전화연결됩니다."
-            y = 850
-            font_size = 80
+            text = f"문의방법\n사진클릭\n전화연결"
+            y = 250
+            font_size = 180
         else:
-            text = "사진 클릭시 전화연결됩니다."
-            y = 930
-            font_size = 90
-        self.drawer.draw_text_on_image(self.img, text, pos_y=y, font_size=font_size, rgb=config.TEXT_BORDER_COLOR,
-            b_rgb=config.TEXT_FILL_COLOR)
+            text = "사진 누르면 전화\n상담 연결 됩니다"
+            y = 700
+            font_size = 120
+        self.drawer.draw_text_on_image(self.img, text, pos_y=y, font_size=font_size, rgb=config.NAME_FILL_COLOR, b_rgb=config.NAME_FILL_COLOR, spacing=50, stroke_width=0)
         return self.img
 
     def make_last(self, text: str) -> Image:

@@ -20,7 +20,7 @@ def make_image_by_type(filename: str, imagemaker: ImageMaker) -> str | None:
             img = imagemaker.make_main(config.TITLE)
             dname = 'fin_main.jpg'
         case TYPE_FILE_NUMBER.TWO | TYPE_FILE_NUMBER.THREE:
-            text = '작업전' if filename == TYPE_FILE_NUMBER.TWO else '작업후'
+            text = '작업 전' if filename == TYPE_FILE_NUMBER.TWO else '작업 후'
             img = imagemaker.make_beaf(text)
             dname = f'fin_{text}.jpg'
         case TYPE_FILE_NUMBER.FOUR | TYPE_FILE_NUMBER.FIVE:
@@ -59,7 +59,7 @@ def total(path: str):
             make_image_by_type(f, imagemaker)
         elif extension in VIDEO_EXTENSIONS:
             video_file_path_list.append(filename)
-    VideoMaker(drawer=drawer).make_video(video_file_path_list)
+    # VideoMaker(drawer=drawer).make_video(video_file_path_list)
 
     with open(config.W13_DIR / 'city.txt', 'w', encoding='utf-8') as af:
         af.write(Location().get_cities())
