@@ -33,14 +33,13 @@ class ImageMaker:
         self.img = img.resize((config.IMG_SIZE, config.IMG_SIZE), Image.LANCZOS)
 
     def make_main(self, text: str) -> Image:
-        # self._add_border(8, config.TEXT_BORDER_COLOR)
+        text = '\n'.join(text)
+        self.drawer.draw_text_on_image(
+            self.img, text, pos_x=config.MAIN_POSITION_X, pos_y=config.MAIN_POSITION_Y, font_size=config.MAIN_FONT_SIZE, rgb=config.NAME_FILL_COLOR,
+            stroke_width=0, has_rectangle=True
+        )
         self._add_border(50, config.IMAGE_BORDER_COLOR)
 
-        # text = '\n'.join(text)
-        # self.drawer.draw_text_on_image(
-        #     self.img, text, pos_x=config.MAIN_POSITION_X, pos_y=config.MAIN_POSITION_Y, font_size=config.MAIN_FONT_SIZE, rgb=config.TEXT_FILL_COLOR,
-        #     b_rgb=config.TEXT_BORDER_COLOR, spacing=70, stroke_width=7
-        # )
         return self.img
 
     def make_beaf(self, text: str) -> Image:

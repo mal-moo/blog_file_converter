@@ -16,11 +16,14 @@ class Drawer:
         b_rgb: list[int] | tuple[int] | str = config.TEXT_BORDER_COLOR,
         has_background: bool = False,
         spacing: int = 30,
-        stroke_width: int = 4
-    ) -> Image:
+        stroke_width: int = 4,
+        has_rectangle: bool = False
+        ) -> Image:
         draw = ImageDraw.Draw(img, 'RGBA')
         font = ImageFont.truetype(str(config.FONT), font_size)
 
+        if has_rectangle:
+            draw.rectangle((0, 0, 1200, 400), fill=(255, 255, 255, 170))
         # x, y
         _, _, x, y = draw.textbbox((0, 0), text, font=font)  # x, y = draw.textsize(text, font)
         pos_x = (config.IMG_SIZE-x)/2 if pos_x is None else pos_x
