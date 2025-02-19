@@ -14,6 +14,11 @@ class VideoMaker:
 
     def make_video(self, video_file_path_list: list):
         try:
+            for video_file in video_file_path_list:
+                video = mp.VideoFileClip(f'{config.W13_DIR}/{video_file}')
+                gif_file = video_file.replace('.mp4', '.gif')
+                video.write_gif(f'{config.W13_DIR}/{gif_file}', fps=10)
+
             dtime_format = '%Y-%m-%d-%H-%M-%S'
             v1_time = datetime.strptime(video_file_path_list[0].split('_')[-1].replace('.mp4', ''), dtime_format)
             v2_time = datetime.strptime(video_file_path_list[1].split('_')[-1].replace('.mp4', ''), dtime_format)
